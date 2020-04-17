@@ -6,7 +6,6 @@ Riker is a simple C++ project generator
 import os
 from colors import Colors as c
 import shutil
-import templates
 
 
 class Riker:
@@ -14,11 +13,12 @@ class Riker:
     The Riker class will handle all the implementation
     details
     '''
-    def __init__(self: object, p_project_name: str):
-        self.m_project_name = p_project_name
-        self.m_make = "Makefile"
+    def __init__(self: object, p_templates: {}):
+        self.m_templates = p_templates
         self.m_directories = ['hdr', 'src', 'make_scripts', 'tests', 'doc', 'man1']
-        self.initial_path = os.getcwd()
+        self.m_project_name = ""
+        self.m_initial_path = os.getcwd()
+        self.m_git_repo = None
 
 
     @property
@@ -27,13 +27,6 @@ class Riker:
         getter for project name
         '''
         return self.m_project_name
-
-    @property
-    def makefile(self: object) -> str:
-        '''
-        return the makefile string
-        '''
-        return self.m_make
 
     @property
     def directories(self: object) -> []:
