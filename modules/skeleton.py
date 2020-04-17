@@ -3,13 +3,18 @@ Riker is a simple C++ project generator
 '''
 #!/usr/bin/env python3
 
+from colors import Colors
+import os
+import shutil
 import templates
+
 
 class Skeleton:
     '''
     Skeleton to handle templates for C++ project
     '''
     def __init__(self: object, p_project_name: str):
+        self.m_path = p_path
         self.m_project_name = p_project_name
         self.m_make = "Makefile"
         self.m_directories = ['hdr', 'src', 'make_scripts', 'tests', 'doc', 'man1']
