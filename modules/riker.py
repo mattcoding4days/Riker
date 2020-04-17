@@ -1,55 +1,60 @@
 '''
-Arb Doc
+Riker is a simple C++ project generator
 '''
 #!/usr/bin/env python3
 
 import os
 from colors import Colors as c
 import shutil
-from skeleton import Skeleton
 import templates
 
 
-def get_project_input():
+class Riker:
     '''
-    get user input for name of project
+    The Riker class will handle all the implementation
+    details
     '''
-    project_name = input("Enter name of project: ")
-    return project_name
+    def __init__(self: object, p_project_name: str):
+        self.m_project_name = p_project_name
+        self.m_make = "Makefile"
+        self.m_directories = ['hdr', 'src', 'make_scripts', 'tests', 'doc', 'man1']
+        self.initial_path = os.getcwd()
 
 
+    @property
+    def project_name(self: object) -> str:
+        '''
+        getter for project name
+        '''
+        return self.m_project_name
 
+    @property
+    def makefile(self: object) -> str:
+        '''
+        return the makefile string
+        '''
+        return self.m_make
 
-def main():
-    '''
-    init the main routine
+    @property
+    def directories(self: object) -> []:
+        '''
+        return the list of directories
+        that will build the project skeleton
+        '''
+        return self.m_directories
 
-    '''
-    proj_name = get_project_input()
-    path = os.getcwd()
-    new_path = os.path.join(path, proj_name)
+    @directories.setter
+    def directories(self, new_dir: str):
+        '''
+        incase we want to make our project more complex
+        we can add more directores to the list
+        '''
+        exists = None
+        for folder in self.m_directories:
+            if folder == new_dir:
+                exists = True
 
-    if not os.path.exists(new_path):
-        os.mkdir(new_path)
-    else:
-        print('The path already exists')
-
-
-    #current_path = os.getcwd()
-    #print(current_path)
-    #dirs_in_path = os.listdir()
-
-    ## iterate through the directories in the path
-    ## to make sure we have a match
-    #for item in dirs_in_path:
-    #    if item == 'test':
-    #        new_path = os.path.join(current_path, item)
-    #        os.chdir(new_path)
-    #        print(os.getcwd())
-
-
-
-
-
-if __name__ == '__main__':
-    main()
+        if not exists:
+            self.m_directories.append(new_dir)
+        else:
+            print(f"{new_dir} already found in project list, did not add")
