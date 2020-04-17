@@ -5,7 +5,9 @@ Riker is a simple C++ project generator
 
 import os
 import sys
-from colors import Colors as c
+from constants import Colors as c
+from constants import Devicons as icons
+
 
 class Riker:
     '''
@@ -151,5 +153,5 @@ class Riker:
         os.chdir(self.full_project_path)
         # create all the directories
         for directory in self.directories:
-            print(f"{c.BBlue}   {c.Reset} Creating {directory}")
+            print(f"{c.BBlue} {icons.Folder} {c.Reset} Creating {directory}")
             os.mkdir(directory)
