@@ -7,10 +7,6 @@ from riker import Riker
 from templates import TEMPLATES
 
 
-
-
-
-
 def main():
     '''
     init the main routine
