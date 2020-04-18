@@ -24,6 +24,8 @@ class Devicons:
     '''
     Developer Icons
     '''
+    Success = ' '
+    Failure = '❌'
     Folder = ' '
     Open_Folder = ' '
     Git = ' '
@@ -34,6 +36,6 @@ class Devicons:
     Linux = ''
     Markdown = ''
     Json = ''
-    Cpp = ''
-    Header = ''
-    Shell = ''
+    Cpp = ' '
+    Header = ' '
+    Shell = ' '
