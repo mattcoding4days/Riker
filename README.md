@@ -29,6 +29,11 @@
     - Riker uses pyinstaller to compile the project to bytecode and install
     - The virtual env is activated, pip installs 3rd party modules from requirments.txt from the Makefile
 
+### Riker supports Unicode, You will need a patched Nerdfont to see all the fancy symbols
+[Here is a link to a nice Nerdfont](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
+> Click on the 'view raw' button, your system will automatically download it, install the font,
+> and enable it in your terminal of choice. Note: Gnome-terminal may require you to set the font in 
+> sustem settings, not in the terminal font preferences, but try both methods.
 
 ```bash
 
@@ -41,13 +46,6 @@ sudo apt install python3-pip
 # if you dont have your c/c++ installed you will need those
 sudo apt install build-essential
 
-# Since unicode is supported, many sweet devicons are used. you will need
-# to download a patched font so they render properly. (You should be using a patched font anyways)
-
-# here is a popular run, simply click on 'view raw' and it will auto download
-[link](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
-# install with your systems font installer, and enable the font in your terminal.
-# Gnome terminal may have to change system wide font in settings, because Gnome terminal is wierd
 
 # Clone the project
 git clone https://github.com/mattcoding4days/Riker.git
