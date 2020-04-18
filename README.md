@@ -80,4 +80,4 @@ make clean
 > only Make as a build system is supported, Riker revolves around the specifications set forth 
 > by my University
 >
-> Yes, Riker is named after Captain Picards first office, I am a StarTrek Nerd
+> Yes, Riker is named after Captain Picards first officer, I am a StarTrek Nerd
