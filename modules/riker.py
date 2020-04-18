@@ -139,7 +139,7 @@ class Riker:
         valid = False
         while not valid:
             make_repo = input(f"{c.BGreen}Initialize the project with a git repo?:"
-                              f"{c.Reset}{c.BBlue}[y/n]{c.Reset} ").lower()
+                              f"{c.Reset}{c.BBlue} [y/n]{c.Reset} ").lower()
 
             if make_repo in ('y', 'yes'):
                 self.m_git_repo = True
@@ -189,7 +189,8 @@ class Riker:
         else:
             temp_path = os.path.join(self.full_project_path, directory)
 
-        print(f"{c.BBlue}{icons.Open_Folder}{c.Reset}{c.BGreen} => {c.Reset}Entering {temp_path}")
+        print(f"{c.BBlue}{icons.Open_Folder}{c.Reset}{c.BGreen} => "
+              f"{c.Reset}Entering {c.BWhite}{temp_path}{c.Reset}")
         curr_path = os.getcwd()
         if curr_path != temp_path:
             os.chdir(temp_path)
@@ -212,7 +213,26 @@ class Riker:
         success = None
         if temp_file:
             with open(file_match, 'xt') as file:
-                print(f"\t{c.BBlue}{icons.Header}{c.Reset} Attempting to create {file_match}")
+                extension = file_match.split('.')
+                if len(extension) > 1:
+                    ext = extension[1]
+                else:
+                    ext = extension[0]
+
+                if ext in ('hpp', 'h', 'hh'):
+                    print(f"\t{c.BCyan}{icons.Header}{c.Reset}", end=" ")
+                elif ext in ('cpp', 'cc', 'cxx'):
+                    print(f"\t{c.BBlue}{icons.Cpp}{c.Reset}", end=" ")
+                elif ext in ('sh', 'bash', 'zsh'):
+                    print(f"\t{c.BYellow}{icons.Shell}{c.Reset}", end=" ")
+                elif ext in ('md', 'Md', 'MD', 'mD'):
+                    print(f"\t{c.BRed}{icons.Markdown}{c.Reset}", end=" ")
+                elif ext in ('Makefile', 'makefile'):
+                    print(f"\t{c.BPurple}{icons.Generic}{c.Reset}", end=" ")
+                else:
+                    print(f"\t{c.BPurple}{icons.Generic}{c.Reset}", end=" ")
+
+                print(f"Attempting to create {c.BBlue}{file_match}{c.Reset}")
                 file.write(temp_file)
             success = True
 
@@ -226,11 +246,13 @@ class Riker:
         print proper messsage
         '''
         if value:
-            print(f"\t{c.BGreen}{icons.Success} Success{c.Reset} "
-                  f"creating {file_match} in directory {directory}\n")
+            print(f"\t{c.BGreen}{icons.Success}Success{c.Reset} "
+                  f"creating {c.BWhite}{file_match}{c.Reset} "
+                  f"in directory {c.BPurple}{directory}{c.Reset}\n")
         else:
-            print(f"\t{c.BRed}\t{icons.Failure} Failure{c.Reset} "
-                  f"creating {file_match} in directory {directory}\n")
+            print(f"\t{c.BRed}{icons.Failure}Failure{c.Reset} "
+                  f"creating {c.BWhite}{file_match}{c.Reset} "
+                  f"in directory {c.BPurple}{directory}{c.Reset}\n")
 
 
     def build_project(self: object):
@@ -246,8 +268,8 @@ class Riker:
 
         # cd into each new directory and create the files in the proper directory
         for directory in self.directories:
-            # change to project root for the beginning
-            # of each iteration
+            # check to see if we are in project root,
+            # if not, then change dir to it
             curr_path = os.getcwd()
             if curr_path != self.full_project_path:
                 os.chdir(self.full_project_path)
@@ -268,11 +290,38 @@ class Riker:
                 retval = self.__write_files(temp_file, file_match)
                 self.__is_success(retval, directory, file_match)
 
-                # reset string, we have two files going in the src directory
+                # reset strings, we have multuple files going in this directory
                 file_match = ""
                 temp_file = ""
 
                 file_match = 'main.cpp'
+                temp_file = self.__build_helper(directory, file_match)
+
+                retval = self.__write_files(temp_file, file_match)
+                self.__is_success(retval, directory, file_match)
+
+            elif directory in 'make_scripts':
+                file_match = 'clean_checks.sh'
+                temp_file = self.__build_helper(directory, file_match)
+
+                retval = self.__write_files(temp_file, file_match)
+                self.__is_success(retval, directory, file_match)
+
+                # reset strings, we have multuple files going in this directory
+                file_match = ""
+                temp_file = ""
+
+                file_match = 'prelim_checks.sh'
+                temp_file = self.__build_helper(directory, file_match)
+
+                retval = self.__write_files(temp_file, file_match)
+                self.__is_success(retval, directory, file_match)
+
+                # reset strings, we have multuple files going in this directory
+                file_match = ""
+                temp_file = ""
+
+                file_match = 'global_vars.sh'
                 temp_file = self.__build_helper(directory, file_match)
 
                 retval = self.__write_files(temp_file, file_match)
