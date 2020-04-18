@@ -1,11 +1,6 @@
-# Riker - A command line C++ project generator written in Python
+# Riker
 
-## For shell dwelling Vimmers whom hate IDE's but still want to automate project generation
-    - Create a Library project
-    - Console project
-    - Gtk project
-    - Boost Library project
-
+## A command line C++ project generator written in Python, For shell dwelling Vimmers whom hate IDE's but still want to automate project generation
 
 ## Current Implemented features
     - [x] Creates a Library style console project (Easily modifiable)
@@ -50,7 +45,7 @@ sudo apt install build-essential
 # to download a patched font so they render properly. (You should be using a patched font anyways)
 
 # here is a popular run, simply click on 'view raw' and it will auto download
-[Nerdfonts](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
+[link](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
 # install with your systems font installer, and enable the font in your terminal.
 # Gnome terminal may have to change system wide font in settings, because Gnome terminal is wierd
 
