@@ -19,7 +19,7 @@ def report_error(msg: str):
     central function for error reporting
     Print error msg to stderr, then exit
     '''
-    sys.stderr.write(f'\n{msg}\n')
+    sys.stderr.write(f'\n\n{msg}\n')
     sys.exit(1)
 
 
@@ -56,13 +56,14 @@ def install_executable(binary_path: str) -> bool:
     '''
     success = None
     os.chdir(binary_path)
+    retval = ''
     try:
         retval = shutil.move('riker_run', INSTALL_DIR)
     except shutil.Error as err:
-        print(f"Not re-installing -> {err}")
+        report_error(f'Not re-installing -> {err}')
 
     if os.path.isfile(retval):
-        print(f"\nInstall successfull: {retval}")
+        print(f"\nInstall successfull -> {retval}")
         success = True
         return success
 
