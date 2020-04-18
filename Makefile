@@ -1,14 +1,11 @@
-all: env install
+all: install
 
 .ONESHELL:
-env:
+install:
 	python3 -m venv riker-env
 	source riker-env/bin/activate
 	pip3 install -r requirements.txt
-
-install:
-	source riker-env/bin/activate
-	sudo python install.py
+	sudo python3 install.py
 
 update:
 	git pull
@@ -19,4 +16,4 @@ uninstall:
 clean:
 	rm -rf riker-env
 
-.PHONY: all env install update clean
+.PHONY: all install update clean

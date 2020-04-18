@@ -1,7 +1,7 @@
 '''
 Installer script for the Riker C++ project generator
 '''
-#!/bin/env python3
+#!/usr/bin/env python3
 
 import os
 import shutil
