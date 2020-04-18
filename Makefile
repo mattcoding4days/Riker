@@ -13,4 +13,10 @@ install:
 update:
 	git pull
 
-.PHONY: all env install update
+uninstall:
+	sudo rm /usr/local/bin/riker_run
+
+clean:
+	rm -rf riker-env
+
+.PHONY: all env install update clean
