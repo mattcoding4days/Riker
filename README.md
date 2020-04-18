@@ -1,4 +1,4 @@
-# Riker
+# Riker - The Patricians choice in project generators
 
 ## A command line C++ project generator written in Python, For shell dwelling Vimmers whom hate IDE's but still want to automate project generation
 
@@ -31,9 +31,9 @@
 
 ### Riker supports Unicode, You will need a patched Nerdfont to see all the fancy symbols
 [Here is a link to a nice Nerdfont](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
-> Click on the 'view raw' button, your system will automatically download it, install the font,
+> Click on the 'view raw' button, your browser will automatically download the font, install the font,
 > and enable it in your terminal of choice. Note: Gnome-terminal may require you to set the font in 
-> sustem settings, not in the terminal font preferences, but try both methods.
+> system settings, not in the terminal font preferences, but try both methods.
 
 ```bash
 
@@ -43,7 +43,7 @@
 # here is an example how to install pip3 on Ubuntu
 sudo apt install python3-pip
 
-# if you dont have your c/c++ installed you will need those
+# if you dont have your c/c++ build tools installed you will need those
 sudo apt install build-essential
 
 
@@ -77,4 +77,7 @@ make clean
 > Riker will make the project in the directory that you are in when you run the program
 >
 > Please Note that Riker has been made to my own specifications and needs, it is for Linux development
-> only Make as a build system is supported, Riker revolved around the specifications of my University
+> only Make as a build system is supported, Riker revolves around the specifications set forth 
+> by my University
+>
+> Yes, Riker is named after Captain Picards first office, I am a StarTrek Nerd
