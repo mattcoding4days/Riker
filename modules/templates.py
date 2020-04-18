@@ -358,5 +358,24 @@ _BIN="bin"
 export _OBJ
 export _OBJD
 export _BIN
+""",
+
+    # item 8 example.1
+    'example.1' : f""".TH man 1 "017 April 2020" "1.0" "example man page"
+.SH NAME
+example \- a super sweet application
+.SH SYNOPSIS
+example [-s] something awesome
+        [-a] something else groundbreaking
+.SH DESCRIPTION
+description of your library or application here
+.SH OPTIONS
+descript your positional and non positional arguments in detail here
+.SH SEE ALSO
+possibly list your support scripts/program man pages here
+.SH BUGS
+List known bugs here
+.SH AUTHOR
+your name (you@protonmail.com)
 """
 }

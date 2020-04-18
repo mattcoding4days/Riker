@@ -214,6 +214,9 @@ class Riker:
         if temp_file:
             with open(file_match, 'xt') as file:
                 extension = file_match.split('.')
+                # need to test then length of the returned array
+                # as somefiles do not have extensions,
+                # [eg] Makefiles
                 if len(extension) > 1:
                     ext = extension[1]
                 else:
@@ -246,12 +249,12 @@ class Riker:
         print proper messsage
         '''
         if value:
-            print(f"\t{c.BGreen}{icons.Success}Success{c.Reset} "
-                  f"creating {c.BWhite}{file_match}{c.Reset} "
+            print(f"\t{c.BGreen}{icons.Success}Successfully{c.Reset} "
+                  f"generated {c.BWhite}{file_match}{c.Reset} "
                   f"in directory {c.BPurple}{directory}{c.Reset}\n")
         else:
             print(f"\t{c.BRed}{icons.Failure}Failure{c.Reset} "
-                  f"creating {c.BWhite}{file_match}{c.Reset} "
+                  f"generating {c.BWhite}{file_match}{c.Reset} "
                   f"in directory {c.BPurple}{directory}{c.Reset}\n")
 
 
@@ -322,6 +325,13 @@ class Riker:
                 temp_file = ""
 
                 file_match = 'global_vars.sh'
+                temp_file = self.__build_helper(directory, file_match)
+
+                retval = self.__write_files(temp_file, file_match)
+                self.__is_success(retval, directory, file_match)
+
+            elif directory in 'man1':
+                file_match = 'example.1'
                 temp_file = self.__build_helper(directory, file_match)
 
                 retval = self.__write_files(temp_file, file_match)
