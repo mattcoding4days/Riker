@@ -232,6 +232,8 @@ class Riker:
                     print(f"\t{c.BRed}{icons.Markdown}{c.Reset}", end=" ")
                 elif ext in ('Makefile', 'makefile'):
                     print(f"\t{c.BPurple}{icons.Generic}{c.Reset}", end=" ")
+                elif ext in ('1', 'groff', 'troff'):
+                    print(f"\t{c.BGreen}{icons.Man}{c.Reset}", end=" ")
                 else:
                     print(f"\t{c.BPurple}{icons.Generic}{c.Reset}", end=" ")
 
