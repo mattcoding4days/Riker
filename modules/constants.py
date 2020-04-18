@@ -40,3 +40,4 @@ class Devicons:
     Header = ' '
     Shell = ' '
     Generic = ' '
+    Man = ' '
