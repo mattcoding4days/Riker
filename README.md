@@ -1,4 +1,4 @@
-% Riker - The Patricians choice in project generators
+# Riker - The Patricians choice in project generators
 
 ## A command line C++ project generator written in Python, For shell dwelling Vimmers whom hate IDE's but still want to automate project generation
 <!-- Picture embedded -->
