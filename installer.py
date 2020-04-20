@@ -82,22 +82,22 @@ class Installer:
 
 
 
-    def prepare_install_target(self: object):
+    def prepare(self: object):
         '''
         check to see if ~/install_dir exists
         if not, create it, then
         '''
         if os.path.exists(self.install_dir):
             if self.debug:
-                print(f'{YEL}Debug: {self.prepare_install_target.__name__}'
+                print(f'{YEL}Debug: {self.prepare.__name__}'
                       f' -> The path {self.install_dir} exists {RES}')
             self.install_dir_exists = True
         else:
             if self.debug:
-                print(f'{YEL}Debug: {self.prepare_install_target.__name__}'
+                print(f'{YEL}Debug: {self.prepare.__name__}'
                       f' -> The path {self.install_dir} does not exist {RES}')
 
-                print(f'{YEL}Debug: {self.prepare_install_target.__name__}'
+                print(f'{YEL}Debug: {self.prepare.__name__}'
                       f' -> Changing directory into {self.user_home} {RES}')
 
 
@@ -105,7 +105,7 @@ class Installer:
             self.install_dir_exists = True
 
             if self.debug:
-                print(f'{YEL}Debug: {self.prepare_install_target.__name__}'
+                print(f'{YEL}Debug: {self.prepare.__name__}'
                       f' -> Making directory {self.install_dir} {RES}')
 
             # call helper method to write to .profile
@@ -261,7 +261,7 @@ def main():
     main routine
     '''
     install = Installer(_debug=True)
-    install.prepare_install_target()
+    install.prepare()
     install.build()
     install.install()
     install.clean()
