@@ -72,10 +72,12 @@ riker_run
 # and the build envirnment.
 
 ```
+
 ## Optional installer script commands that are under development
-> -v to turn debugging verbosity on or off -- right now its hardcoded to be on
-> -r to remove or uninstall riker_run
-> -u to update
+
+> [ -v ] to turn debugging verbosity on or off (right now its hardcoded to be on)
+> [ -r ] to remove or uninstall riker_run
+> [ -u ] to update
 
 
 ## Usage
@@ -92,6 +94,7 @@ riker_run
 > Yes, Riker is named after Captain Picards first officer, I am a StarTrek Nerd
 
 ## Did my code blow up???
+
 > Currently Riker has only been tested on Arch, and only a little but on Ubuntu
 
 > Please open an issue for your bug report here on github
@@ -100,7 +103,8 @@ riker_run
 > along with your distro information
 
 ## Want Feature X implemented ?
+
 > Please explain why and consider contributing
 
 ## Does my code suck???
-> Tell me why in a constructive way, and and contribute to make it better
+> Tell me why in a constructive way, and contribute to make it better
