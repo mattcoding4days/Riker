@@ -3,6 +3,7 @@ Installer script for Riker
 '''
 #!/usr/bin/env python3
 
+import argparse
 import os
 import shutil
 import sys
@@ -77,7 +78,7 @@ class Installer:
                     file.write(self.export_code)
                     file.close()
         except OSError as err:
-            error = f"Error: {self.__write_profile.__name__} {err}"
+            error = f"Error: {self.__write_profile.__name__} -> {err}"
             self.report_error(error)
 
         # go back to project root folder
@@ -131,7 +132,7 @@ class Installer:
             else:
                 subprocess.call(f'./{venv}/bin/pip3 install -r requirements.txt', shell=True)
         except OSError as err:
-            error = f"Error: {self.__invoke_pip.__name__} {err}"
+            error = f"Error: {self.__invoke_pip.__name__} -> {err}"
             self.report_error(error)
 
 
@@ -155,7 +156,7 @@ class Installer:
                 print(f'{YEL}Debug: {self.__prepare_virtual_env.__name__}'
                       f' -> {require} exists {RES}')
                 print(f'{YEL}Debug: {self.__prepare_virtual_env.__name__}'
-                      f'{self.venv_dir} does not exist, preparing 3 subprocess calls {RES}')
+                      f' -> {self.venv_dir} does not exist, preparing 3 subprocess calls {RES}')
 
             # run pip3 package manager
             self.__invoke_pip()
@@ -205,9 +206,11 @@ class Installer:
                 print(f'{YEL}Debug: {self.build.__name__}'
                       f' -> preparing to run a subprocess in {os.getcwd()} {RES}')
             venv = os.path.basename(self.venv_dir)
-            subprocess.call(f'../{venv}/bin/pyinstaller --onefile ../modules/riker_run.py', shell=True)
+            subprocess.call(f'../{venv}/bin/pyinstaller --onefile ../modules/riker_run.py',
+                            shell=True)
+
         except OSError as err:
-            error = f"Error: {self.build.__name__} {err}"
+            error = f"Error: {self.build.__name__} -> {err}"
             self.report_error(error)
 
 
@@ -225,9 +228,9 @@ class Installer:
                 print(f'{YEL}Debug: {self.install.__name__}'
                       f' -> preparing to run a subprocess in {os.getcwd()} {RES}')
 
-                is_installed = shutil.move('riker_run', self.install_dir)
+            is_installed = shutil.move('riker_run', self.install_dir)
         except OSError as err:
-            error = f"Error: {self.build.__name__} {err}"
+            error = f"Error: {self.install.__name__} -> {err}"
             self.report_error(error)
 
         if is_installed:
@@ -257,7 +260,7 @@ class Installer:
                 shutil.rmtree(build)
 
         except OSError as err:
-            error = f"Error: {self.build.__name__} {err}"
+            error = f"Error: {self.clean.__name__} -> {err}"
             self.report_error(error)
 
 
@@ -265,7 +268,17 @@ def main():
     '''
     main routine
     '''
-    install = Installer(_debug=True)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-d", "--debug", help="enable debug logging",
+                        action="store_true")
+
+    args = parser.parse_args()
+
+    if args.debug:
+        install = Installer(_debug=True)
+    else:
+        install = Installer()
+
     install.prepare()
     install.build()
     install.install()
