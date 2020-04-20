@@ -65,17 +65,17 @@ class Installer:
         '''
         os.chdir(self.user_home)
         profile = '.profile'
-        if os.path.isfile(profile):
-            try:
+        try:
+            if os.path.isfile(profile):
                 with open(profile, 'at') as file:
                     if self.debug:
                         print(f'{YEL}Debug: {self.__write_profile.__name__}'
                               f' -> Appending new path export to {profile} {RES}')
                     file.write(self.export_code)
                     file.close()
-            except OSError as err:
-                error = f"Error: {self.__write_profile.__name__} {err}"
-                self.report_error(error)
+        except OSError as err:
+            error = f"Error: {self.__write_profile.__name__} {err}"
+            self.report_error(error)
 
         # go back to project root folder
         self.__cd_project_root()
