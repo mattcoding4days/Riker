@@ -16,6 +16,7 @@ YEL = "\033[1;33m"
 BLU = "\033[1;34m"
 RES = "\033[0m"
 
+
 class Installer:
     '''
     Arb Doc
@@ -47,6 +48,7 @@ class Installer:
 
     def __cd_project_root(self):
         '''
+        ! Private method: Only to be used by public methods
         check to see the current working directory,
         if it does not match the projects root directory
         then change directory back to project root
@@ -61,6 +63,7 @@ class Installer:
 
     def __write_profile(self: object):
         '''
+        ! Private method: Only to be used by public methods
         append export code to users .profile
         '''
         os.chdir(self.user_home)
@@ -115,6 +118,7 @@ class Installer:
 
     def __invoke_pip(self, full_run=True):
         '''
+        ! Private method: Only to be used by public methods
         invoke a subprocess to run pip3
         '''
         venv = os.path.basename(self.venv_dir)
@@ -134,6 +138,7 @@ class Installer:
 
     def __prepare_virtual_env(self: object):
         '''
+        ! Private method: Only to be used by public methods
         1. Create the virtual env from this script
         2. use pip3 from installed virtual environment
            ( a work around so we dont have to source the ghetto activate script
