@@ -54,13 +54,22 @@ sudo apt install build-essential
 # Clone the project
 git clone https://github.com/mattcoding4days/Riker.git
 
-# cd into the repository and run the installer script
-# in either of these two ways
+# cd into the Riker repository and run the installer script
+
+# as always run a script with the -h or --help command to see,
+# a list of supported arguments
+python3 installer.py -h
+
+# Run the script in either of these two ways
 python3 installer.py
 
 # or 
 chmod +x installer.py
 ./intaller.py
+
+# or run with the --debug flag to enable debug logging
+python3 installer.py -d
+
 
 # the installer will make a new directory if you dont already have it,
 # at $HOME/.bin - the installer will then add $HOME/.bin to your .profile
