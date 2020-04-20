@@ -35,12 +35,12 @@ class Installer:
 
 
 
-    @staticmethod
-    def report_error(msg: str):
+    def report_error(self: object, msg: str):
         '''
         centralized error reporting method
         '''
         sys.stderr.write(f'{RED}\n\n{msg} aborting install{RES}\n')
+        self.clean()
         sys.exit(1)
 
 
