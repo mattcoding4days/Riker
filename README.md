@@ -1,6 +1,9 @@
-# Riker - The Patricians choice in project generators
+% Riker - The Patricians choice in project generators
 
 ## A command line C++ project generator written in Python, For shell dwelling Vimmers whom hate IDE's but still want to automate project generation
+<!-- Picture embedded -->
+![](assets/riker.png)
+
 
 ## Current Implemented features
     - [x] Creates a Library style console project (Easily modifiable)
@@ -23,11 +26,9 @@
 ## Installation Process
 
 * I have tried to automate the installation process, and make it as simple as possible
-    - First, everything is ran through the make file.
     - install.py handles all the dirty work
-    - DO NOT run install.py directly, it is called indirectly by make
-    - Riker uses pyinstaller to compile the project to bytecode and install
-    - The virtual env is activated, pip installs 3rd party modules from requirments.txt from the Makefile
+    - riker uses pyinstaller to compile down to bytcode
+    - this produces one binary, that is faster and simple
 
 ### Riker supports Unicode, You will need a patched Nerdfont to see all the fancy symbols
 [Here is a link to a nice Nerdfont](https://github.com/ryanoasis/nerd-fonts/blob/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf)
@@ -43,6 +44,9 @@
 # here is an example how to install pip3 on Ubuntu
 sudo apt install python3-pip
 
+# and on ubuntu you must also install the virtual environment
+sudo apt install python3-venv
+
 # if you dont have your c/c++ build tools installed you will need those
 sudo apt install build-essential
 
@@ -50,24 +54,29 @@ sudo apt install build-essential
 # Clone the project
 git clone https://github.com/mattcoding4days/Riker.git
 
-# cd into Riker
-make
+# cd into the repository and run the installer script
+# in either of these two ways
+python3 installer.py
 
-# once make finishes it will have installed riker_run to /usr/local/bin
-# thats it, now refresh your terminal and run
+# or 
+chmod +x installer.py
+./intaller.py
+
+# the installer will make a new directory if you dont already have it,
+# at $HOME/.bin - the installer will then add $HOME/.bin to your .profile
+
+# thats it, you must either log out or reboot your machine so you can run riker_run
 riker_run
 
-# other make commands
+# the installer automatically cleans up after its self, removing the virtual env directories,
+# and the build envirnment.
 
-# update the project
-make update
-
-# uninstall the project
-make uninstall
-
-# clean the project
-make clean
 ```
+## Optional installer script commands that are under development
+> -v to turn debugging verbosity on or off -- right now its hardcoded to be on
+> -r to remove or uninstall riker_run
+> -u to update
+
 
 ## Usage
 
@@ -81,3 +90,17 @@ make clean
 > by my University
 >
 > Yes, Riker is named after Captain Picards first officer, I am a StarTrek Nerd
+
+## Did my code blow up???
+> Currently Riker has only been tested on Arch, and only a little but on Ubuntu
+
+> Please open an issue for your bug report here on github
+
+> If the installer failed you, please attach the output of installer.py to your bug report,
+> along with your distro information
+
+## Want Feature X implemented ?
+> Please explain why and consider contributing
+
+## Does my code suck???
+> Tell me why in a constructive way, and and contribute to make it better
