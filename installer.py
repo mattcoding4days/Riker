@@ -260,8 +260,7 @@ def main():
     '''
     main routine
     '''
-    install = Installer(_build_dir='build-env', _install_dir='.something',
-                        _debug=True)
+    install = Installer(_debug=True)
     install.prepare_install_target()
     install.build()
     install.install()
